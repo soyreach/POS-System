@@ -1,5 +1,11 @@
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const registerCrud = require("./routes/crud.routes");
+const productTypeModel = require("./models/producttype.model");
+const userModel = require("./models/user.model");
+const invoiceModel = require("./models/invoice.model");
 
 app.use(express.json());
 app.use(cookieParser());
