@@ -3,28 +3,38 @@ import { useState, useEffect, useContext } from "react";
 import QueryContext from "../context/QueryContext";
 import toast, { Toaster } from "react-hot-toast";
 
-import Table from '../components/Table/Table';
+import Table from "../components/Table/Table";
 import ProductForm from "../components/Product/ProductForm";
 
-import axios from "axios";
+import axios from "../src/api";
 
 function Product() {
-  const { setEndpoint, setColumns, setRows, showTable, setLabel, handleView, setIsEdit } =
-    useContext(QueryContext);
+  const {
+    setEndpoint,
+    setColumns,
+    setRows,
+    showTable,
+    setLabel,
+    handleView,
+    setIsEdit,
+  } = useContext(QueryContext);
   //   const [showTable, setShowTable] = useState(true);
   setLabel("ទំនិញ");
 
-  async function handleDelete(id) { }
+  async function handleDelete(id) {}
 
   const deleteHandler = async (id) => {
-    const result = await axios.delete('http://localhost:8000/product/' + id)
-    toast.success(result.data.message, { duration: 4000, position: 'top-right' })
+    const result = await axios.delete("http://localhost:8000/product/" + id);
+    toast.success(result.data.message, {
+      duration: 4000,
+      position: "top-right",
+    });
   };
-  const [defaultData, setDefaultData] = useState({})
+  const [defaultData, setDefaultData] = useState({});
   const editHandler = (item) => {
     handleView();
-    setIsEdit(true)
-    setDefaultData(item)
+    setIsEdit(true);
+    setDefaultData(item);
   };
 
   const columns = [
@@ -35,7 +45,7 @@ function Product() {
     "តម្លៃទិញចូល",
     "ចំនួនក្នុងស្តុក",
     "ចំណាំ",
-  ]
+  ];
   const rows = [
     "Picture",
     "ProductName",
@@ -44,8 +54,8 @@ function Product() {
     "Cost",
     "NumberInStock",
     "Note",
-  ]
-  const endPoint = 'product'
+  ];
+  const endPoint = "product";
 
   return (
     <MasterPage>

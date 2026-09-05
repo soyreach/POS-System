@@ -1,7 +1,7 @@
 import MasterPage from "../pages/MasterPage";
 import QueryContext from "../context/QueryContext";
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import axios from "../src/api";
 import toast, { Toaster } from "react-hot-toast";
 import Modal from "../components/Modal";
 

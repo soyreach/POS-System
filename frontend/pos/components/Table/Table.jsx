@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import axios from "../src/api";
 import { TableFilter, TableFooter } from "./TableFilter";
 
 function Table({ deleteHandler, editHandler, columns, rows, endPoint }) {
@@ -29,19 +29,29 @@ function Table({ deleteHandler, editHandler, columns, rows, endPoint }) {
                 <tr key={item._id}>
                   <th>{index + 1}</th>
                   {rows.map((row, index) => (
-
                     <td key={index}>
-                      {(row == 'Picture' && item[row]) ? <img className="w-14 h-14 rounded-2xl" src={`http://localhost:8000/upload/${item[row]}`} onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `http://localhost:8000/upload/image.png`
-                      }} /> : (row == 'ProductType' && item[row]) ? item[row]['ProductType'] || item[row] : item[row]}
+                      {row == "Picture" && item[row] ? (
+                        <img
+                          className="w-14 h-14 rounded-2xl"
+                          src={`http://localhost:8000/upload/${item[row]}`}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `http://localhost:8000/upload/image.png`;
+                          }}
+                        />
+                      ) : row == "ProductType" && item[row] ? (
+                        item[row]["ProductType"] || item[row]
+                      ) : (
+                        item[row]
+                      )}
                     </td>
                   ))}
                   <td>
                     <button
                       type="button"
                       className="text-green-600 bold cursor-pointer hover:underline"
-                      onClick={() => editHandler(item)}>
+                      onClick={() => editHandler(item)}
+                    >
                       កែប្រែ
                     </button>
                     {"  "}|{"  "}
@@ -49,10 +59,12 @@ function Table({ deleteHandler, editHandler, columns, rows, endPoint }) {
                       type="button"
                       className="text-red-600 bold cursor-pointer hover:underline"
                       onClick={async () => {
-                        setData(prev => prev.filter(it => it._id != item._id))
+                        setData((prev) =>
+                          prev.filter((it) => it._id != item._id),
+                        );
                         await deleteHandler(item._id);
-
-                      }}>
+                      }}
+                    >
                       លុប
                     </button>
                   </td>

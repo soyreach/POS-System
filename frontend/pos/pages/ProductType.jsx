@@ -2,13 +2,14 @@ import { useEffect, useState, useContext } from "react";
 import QueryContext from "../context/QueryContext";
 
 import MasterPage from "../pages/MasterPage";
-import axios from "axios";
+import axios from "../src/api";
 import Table from "../components/Table/Table";
 import ProductTypeForm from "../components/ProductType/ProductTypeForm";
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductTypePage() {
-  const { setEndpoint, setColumns, setRows, setLabel } = useContext(QueryContext);
+  const { setEndpoint, setColumns, setRows, setLabel } =
+    useContext(QueryContext);
   // To show Table or Form
   const [showTable, setShowTable] = useState(true);
   // To set data to Form when Edit
@@ -20,13 +21,9 @@ function ProductTypePage() {
     setLabel("ប្រភេទទំនិញ");
   }, []);
 
-  const columns = [
-    "ឈ្មោះប្រភេទទំនិញ", "ពិព៍ណនា"
-  ]
-  const rows = [
-    "ProductType", "Description"
-  ]
-  const endPoint = 'producttype'
+  const columns = ["ឈ្មោះប្រភេទទំនិញ", "ពិព៍ណនា"];
+  const rows = ["ProductType", "Description"];
+  const endPoint = "producttype";
 
   const handleView = () => {
     setShowTable((old_value) => !old_value);

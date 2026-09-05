@@ -1,5 +1,5 @@
 import { RiPlayLargeFill, RiPlayReverseLargeFill } from "react-icons/ri";
-import axios from "axios";
+import axios from "../src/api";
 import { useEffect, useState, useContext } from "react";
 import QueryContext from "../../context/QueryContext";
 import useQuery from "../../hooks/useQuery";
@@ -17,7 +17,6 @@ function TableFilter({ setData, endPoint }) {
   }
 
   useEffect(() => {
-
     if (!loading) {
       setData(result.data);
       setQuery((prev) => ({
@@ -26,7 +25,6 @@ function TableFilter({ setData, endPoint }) {
         total_page: result.total_page,
       }));
     }
-
   }, [loading]);
 
   return (

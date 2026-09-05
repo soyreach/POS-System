@@ -1,7 +1,7 @@
 import MasterPage from "../pages/MasterPage";
 import { useState, useEffect } from "react";
 import DashboardCard from "../components/DashboardCard";
-import axios from "axios";
+import axios from "../src/api";
 
 function Dashboard() {
   const [dashboardData, setdashboardData] = useState([]);

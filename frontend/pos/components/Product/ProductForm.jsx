@@ -1,22 +1,20 @@
 import { useState, useContext, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import QueryContext from "../../context/QueryContext";
-import axios from "axios";
+import axios from "../src/api";
 
 function ProductForm({ endPoint, defaultData }) {
-
   const { handleView, isEdit } = useContext(QueryContext);
-  defaultData = isEdit ? defaultData : {}
-
+  defaultData = isEdit ? defaultData : {};
 
   const [formdata, setformdata] = useState({
-    ProductName: defaultData.ProductName || '',
+    ProductName: defaultData.ProductName || "",
     Picture: "",
-    Price: defaultData.Price || '',
-    Cost: defaultData.Cost || '',
-    Note: defaultData.Note || '',
-    ProductType: defaultData.ProductType?._id || '',
-    NumberInStock: defaultData.NumberInStock || '',
+    Price: defaultData.Price || "",
+    Cost: defaultData.Cost || "",
+    Note: defaultData.Note || "",
+    ProductType: defaultData.ProductType?._id || "",
+    NumberInStock: defaultData.NumberInStock || "",
   });
 
   const [productType, setProductType] = useState([]);
@@ -33,8 +31,7 @@ function ProductForm({ endPoint, defaultData }) {
     fetchProductType();
   }, []);
 
-
-  console.log('IsEdit: ', isEdit)
+  console.log("IsEdit: ", isEdit);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,10 +45,8 @@ function ProductForm({ endPoint, defaultData }) {
     submitData.append("ProductType", formdata.ProductType);
     submitData.append("NumberInStock", formdata.NumberInStock);
 
-
-
     let url = `http://localhost:8000/${endPoint}`;
-    let result = ""
+    let result = "";
 
     if (isEdit) {
       const id = defaultData._id;
@@ -62,7 +57,10 @@ function ProductForm({ endPoint, defaultData }) {
     }
 
     console.log(result);
-    toast.success(result.data.message, { duration: 4000, position: 'top-right' })
+    toast.success(result.data.message, {
+      duration: 4000,
+      position: "top-right",
+    });
 
     setformdata({
       ProductName: "",
@@ -72,9 +70,7 @@ function ProductForm({ endPoint, defaultData }) {
       Note: "",
       ProductType: "",
       NumberInStock: "",
-    })
-
-
+    });
   };
 
   return (
@@ -174,7 +170,9 @@ function ProductForm({ endPoint, defaultData }) {
           />
 
           <label className="label">ចំណាំ</label>
-          <textarea className="textarea w-full" placeholder="សរសេរចំណាំ"
+          <textarea
+            className="textarea w-full"
+            placeholder="សរសេរចំណាំ"
             value={formdata.Note}
             onChange={(e) => {
               setformdata((prev) => ({
@@ -185,10 +183,14 @@ function ProductForm({ endPoint, defaultData }) {
           />
 
           <div className="flex justify-end items-center gap-2">
-            <button type="button" className="btn bg-base-200 mt-4 text-black" onClick={handleView}>
+            <button
+              type="button"
+              className="btn bg-base-200 mt-4 text-black"
+              onClick={handleView}
+            >
               បោះបង់
             </button>
-            <button type="submit" className="btn btn-success mt-4 text-white" >
+            <button type="submit" className="btn btn-success mt-4 text-white">
               {isEdit ? "កែប្រែ" : "រក្សាទុក"}
             </button>
           </div>
