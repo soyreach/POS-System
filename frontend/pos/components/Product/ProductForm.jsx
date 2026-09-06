@@ -20,7 +20,7 @@ function ProductForm({ endPoint, defaultData }) {
   const [productType, setProductType] = useState([]);
 
   const fetchProductType = async () => {
-    const pro_url = `http://localhost:8000/producttype`;
+    const pro_url = `${import.meta.env.VITE_API_URL}/producttype`;
     const pro_result = await axios.get(pro_url);
     setProductType(pro_result.data.data);
 
@@ -45,12 +45,12 @@ function ProductForm({ endPoint, defaultData }) {
     submitData.append("ProductType", formdata.ProductType);
     submitData.append("NumberInStock", formdata.NumberInStock);
 
-    let url = `http://localhost:8000/${endPoint}`;
+    let url = `${import.meta.env.VITE_API_URL}/${endPoint}`;
     let result = "";
 
     if (isEdit) {
       const id = defaultData._id;
-      url = `http://localhost:8000/${endPoint}/${id}`;
+      url = `${import.meta.env.VITE_API_URL}/${endPoint}/${id}`;
       result = await axios.put(url, submitData);
     } else {
       result = await axios.post(url, submitData);

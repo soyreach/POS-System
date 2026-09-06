@@ -33,10 +33,10 @@ function Table({ deleteHandler, editHandler, columns, rows, endPoint }) {
                       {row == "Picture" && item[row] ? (
                         <img
                           className="w-14 h-14 rounded-2xl"
-                          src={`http://localhost:8000/upload/${item[row]}`}
+                          src={`${import.meta.env.VITE_API_URL}/upload/${item[row]}`}
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = `http://localhost:8000/upload/image.png`;
+                            e.target.src = `${import.meta.env.VITE_API_URL}/upload/image.png`;
                           }}
                         />
                       ) : row == "ProductType" && item[row] ? (
