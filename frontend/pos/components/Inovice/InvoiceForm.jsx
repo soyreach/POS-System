@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import axios from "../src/api";
+import axios from "../../src/api";
 import toast, { Toaster } from "react-hot-toast";
 import QueryContext from "../../context/QueryContext";
 

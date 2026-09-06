@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../src/api";
+import axios from "../../src/api";
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductTypeForm({ defaultData, handleView, isEdit }) {

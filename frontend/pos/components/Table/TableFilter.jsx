@@ -1,5 +1,5 @@
 import { RiPlayLargeFill, RiPlayReverseLargeFill } from "react-icons/ri";
-import axios from "../src/api";
+import axios from "../../src/api";
 import { useEffect, useState, useContext } from "react";
 import QueryContext from "../../context/QueryContext";
 import useQuery from "../../hooks/useQuery";

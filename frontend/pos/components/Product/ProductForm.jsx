@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import QueryContext from "../../context/QueryContext";
-import axios from "../src/api";
+import axios from "../../src/api";
 
 function ProductForm({ endPoint, defaultData }) {
   const { handleView, isEdit } = useContext(QueryContext);

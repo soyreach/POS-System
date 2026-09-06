@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import axios from "../src/api";
+import axios from "../../src/api";
 import { TableFilter, TableFooter } from "./TableFilter";
 
 function Table({ deleteHandler, editHandler, columns, rows, endPoint }) {
