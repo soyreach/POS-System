@@ -10,14 +10,6 @@ const invoiceModel = require("./models/invoice.model");
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/producttype", registerCrud(productTypeModel));
-app.use("/user", registerCrud(userModel));
-app.use("/invoice", registerCrud(invoiceModel));
-app.use("/", require("./routes/auth.routes"));
-app.use("/", require("./routes/dashboard.routes"));
-app.use("/", require("./routes/upload.routes"));
-app.use("/", require("./routes/sale.routes"));
-
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL,
@@ -35,5 +27,13 @@ app.use(
     credentials: true,
   }),
 );
+
+app.use("/producttype", registerCrud(productTypeModel));
+app.use("/user", registerCrud(userModel));
+app.use("/invoice", registerCrud(invoiceModel));
+app.use("/", require("./routes/auth.routes"));
+app.use("/", require("./routes/dashboard.routes"));
+app.use("/", require("./routes/upload.routes"));
+app.use("/", require("./routes/sale.routes"));
 
 module.exports = app;
