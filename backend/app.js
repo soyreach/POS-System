@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const allowedOrigins = [
-  "https://pos-system-frontend-liard.vercel.app/",
+  "http://localhost:5173",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
@@ -27,7 +27,6 @@ app.use(
     credentials: true,
   }),
 );
-
 app.use("/producttype", registerCrud(productTypeModel));
 app.use("/user", registerCrud(userModel));
 app.use("/invoice", registerCrud(invoiceModel));
