@@ -14,6 +14,24 @@ function Sale() {
   const [totalProdPrice, setTotalProdPrice] = useState(0);
   const [showInvoice, setShowInvoice] = useState(true);
 
+  /**
+   * Cart:
+   * [
+   *  {
+   *    prod_id:29283,
+   *    price: 12,
+   *    qty: 10,
+   *    total: (12*10)
+   *  },
+   *  {
+   *    prod_id:29284,
+   *    price: 12,
+   *    qty: 10,
+   *    total: (12*10)
+   *  }
+   * ]
+   */
+
   const cartTotal = cart.reduce((sum, item) => sum + item.total, 0);
 
   const handleCart = (product) => {
@@ -106,7 +124,7 @@ function Sale() {
         <div className="w-[70%]">
           {/* Product Type filter */}
           <div className="bg-white w-full rounded-md p-4">
-            <p className="font-bold text-black">ប្រភេទទំនិញ</p>
+            <p className="font-bold">ប្រភេទទំនិញ</p>
             <div className="mt-3">
               <button
                 className={`btn btn-sm rounded-full mr-2 ${selectType == "ALL" && "btn-primary"}`}
@@ -200,7 +218,7 @@ function Sale() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={3} className="text-center text-black">
+                  <td colSpan={3} className="text-center">
                     សូមជ្រើសរើសមុខទំនិញ
                   </td>
                 </tr>
@@ -209,12 +227,10 @@ function Sale() {
               <tr className="bg-gray-200">
                 <td className="p-1 w-[30%]"></td>
                 <td className="p-1 flex justify-center">
-                  <p className="font-bold text-black">សរុប</p>
+                  <p className="font-bold">សរុប</p>
                 </td>
                 <td className="p-1 w-[20%]">
-                  <p className="text-right font-bold text-black">
-                    {cartTotal}$
-                  </p>
+                  <p className="text-right font-bold">{cartTotal}$</p>
                 </td>
               </tr>
             </tbody>
