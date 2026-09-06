@@ -8,14 +8,22 @@ import ProductTypeForm from "../components/ProductType/ProductTypeForm";
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductTypePage() {
-  const { setEndpoint, setColumns, setRows, setLabel } =
-    useContext(QueryContext);
+  const {
+    setEndpoint,
+    setColumns,
+    setRows,
+    setLabel,
+    handleView,
+    showTable,
+    setIsEdit,
+    isEdit,
+  } = useContext(QueryContext);
   // To show Table or Form
-  const [showTable, setShowTable] = useState(true);
+
   // To set data to Form when Edit
   const [data, setData] = useState({});
   // To know when form is edit or add new
-  const [isEdit, setIsEdit] = useState(false);
+  // const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     setLabel("ប្រភេទទំនិញ");
@@ -24,16 +32,6 @@ function ProductTypePage() {
   const columns = ["ឈ្មោះប្រភេទទំនិញ", "ពិព៍ណនា"];
   const rows = ["ProductType", "Description"];
   const endPoint = "producttype";
-
-  const handleView = () => {
-    setShowTable((old_value) => !old_value);
-    setData({
-      ProductType: "",
-      Description: "",
-    });
-    // set to false for button +បន្ថែមថ្មី
-    setIsEdit(false);
-  };
 
   async function handleDelete(id) {
     try {
